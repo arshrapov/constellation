@@ -3,7 +3,7 @@ SpaceObject,
 Cords
 """
 
-from System.exceptions import WrongVectorSizeValue
+from constellation.exceptions import WrongVectorSizeValue
 
 
 class SpaceObject:
@@ -76,4 +76,3 @@ class Cords:
 
     def __str__(self):
         return f"{self.numbers}"
-

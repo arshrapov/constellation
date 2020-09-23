@@ -1,9 +1,9 @@
-import System
+import constellation
 
 
 def main():
-   app = System.SystemApp()
-   app.mainloop()
+    app = constellation.SystemApp()
+    app.mainloop()
 
 
 if __name__ == '__main__':

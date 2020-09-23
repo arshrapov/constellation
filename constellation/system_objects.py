@@ -1,4 +1,4 @@
-"""System Objects:
+"""constellation Objects:
 SystemApp,
 SystemCanvas,
 Frame
