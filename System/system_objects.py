@@ -1,3 +1,9 @@
+"""System Objects:
+SystemApp,
+SystemCanvas,
+Frame
+"""
+
 from tkinter import Tk, Canvas, Frame
 
 

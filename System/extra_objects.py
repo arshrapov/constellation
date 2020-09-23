@@ -1,3 +1,8 @@
+"""Extra Objects:
+SpaceObject,
+Cords
+"""
+
 from System.exceptions import WrongVectorSizeValue
 
 

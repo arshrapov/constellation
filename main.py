@@ -2,7 +2,8 @@ import System
 
 
 def main():
-    pass
+   app = System.SystemApp()
+   app.mainloop()
 
 
 if __name__ == '__main__':
