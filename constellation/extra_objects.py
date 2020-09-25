@@ -3,7 +3,8 @@ SpaceObject,
 Cords
 """
 
-from constellation.exceptions import WrongVectorSizeValue
+from constellation.exceptions import WrongVectorSizeValue, TypeVectorError
+n
 
 
 class SpaceObject:
@@ -39,40 +40,51 @@ class Cords:
     def __len__(self):
         return len(self.numbers)
 
-    def is_available_type(self, other):
+    def is_available_type(self, action, other):
         """If other object type is not available, raise Exception
         :param other: type of other objects
         :return:
         """
-        pass
+        if not (isinstance(other, int) or isinstance(other, Cords)):
+            raise TypeVectorError(action, other)
+        if isinstance(other, Cords):
+            if self.__len__() != len(other):
+                raise WrongVectorSizeValue()
 
     def __add__(self, other):
-        if self.__len__() != len(other):
-            raise WrongVectorSizeValue
+        self.is_available_type("add", other)
+        if isinstance(other, int):
+            other = Cords(*[other in range(self.__len__())])
 
         result_vector_list = [self.numbers[i] + other.numbers[i] for i in range(self.__len__())]
         return Cords(*result_vector_list)
 
     def __sub__(self, other):
-        if self.__len__() != len(other):
-            raise WrongVectorSizeValue
-
+        self.is_available_type("sub", other)
+        if isinstance(other, int):
+            other = Cords(*[other in range(self.__len__())])
+        
         result_vector_list = [self.numbers[i] - other.numbers[i] for i in range(self.__len__())]
         return Cords(*result_vector_list)
 
     def __mul__(self, other):
-        if self.__len__() != len(other):
-            raise WrongVectorSizeValue
-
+        self.is_available_type("mul", other)
+        if isinstance(other, int):
+            other = Cords(*[other for i in range(self.__len__())])
+        
         result_vector_list = [self.numbers[i] * other.numbers[i] for i in range(self.__len__())]
         return Cords(*result_vector_list)
 
     def __div__(self, other):
-        if self.__len__() != len(other):
-            raise WrongVectorSizeValue
-
+        self.is_available_type("div", other)
+        if isinstance(other, int):
+            other = Cords(*[other in range(self.__len__())])
+        
         result_vector_list = [self.numbers[i] / other.numbers[i] for i in range(self.__len__())]
         return Cords(*result_vector_list)
 
     def __str__(self):
         return f"{self.numbers}"
+
+
+
